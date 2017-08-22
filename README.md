@@ -117,7 +117,7 @@ latest: digest: sha256:73bf8db1007c11b7957d69de27f9431a2d79c802a0dd50075b6a1e57a
 
 ## Imagem Publicada: 
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "renizgo/centos7-systemd")
+![alt text](https://github.com/renizgo/centos7-systemd/blob/master/renizgo-centos7-systemd.png "renizgo/centos7-systemd")
 
 
 
