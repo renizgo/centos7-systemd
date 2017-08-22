@@ -121,3 +121,38 @@ latest: digest: sha256:73bf8db1007c11b7957d69de27f9431a2d79c802a0dd50075b6a1e57a
 
 
 
+## Extras
+
+Agora vamos usar um exemplo de uso desta imagem com o seguinte Dockerfile, simulando a instalação do Apache:
+
+```
+
+FROM renizgo/centos7-systemd
+RUN yum -y install httpd; yum clean all; systemctl enable httpd.service
+EXPOSE 80
+CMD ["/usr/sbin/init"]
+```
+
+Build da imagem
+```
+$ docker build --rm -t renizgo/centos7-systemd-httpd .
+```
+
+Teste sua aplicação:
+
+```
+$ docker run --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -d renizgo/centos7-systemd-httpd /usr/sbin/init
+```
+
+Verifique o container em execução:
+
+```
+
+$ docker ps
+CONTAINER ID        IMAGE                           COMMAND             CREATED             STATUS              PORTS                NAMES
+b0c927384a50        renizgo/centos7-systemd-httpd   "/usr/sbin/init"    6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   hungry_kowalevski
+```
+
+Página Web:
+
+![alt text](https://github.com/renizgo/centos7-systemd/blob/master/systemd-http.png "renizgo/systemd-http")
